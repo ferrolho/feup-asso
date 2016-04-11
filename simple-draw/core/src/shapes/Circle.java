@@ -15,11 +15,27 @@ public class Circle {
 		color = Color.BLACK;
 	}
 
+	public Circle(Circle other) {
+		this.x = other.x;
+		this.y = other.y;
+		this.radius = other.radius;
+		this.color = other.color;
+	}
+
 	public Circle(int x, int y, int radius, Color color) {
 		this.x = x;
 		this.y = y;
 		this.radius = radius;
 		this.color = color;
+	}
+
+	public void moveTo(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public void changeSize(int amount) {
+		this.radius += amount;
 	}
 
 	public void draw(ShapeRenderer shapeRenderer) {
