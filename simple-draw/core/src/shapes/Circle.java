@@ -1,46 +1,42 @@
 package shapes;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class Circle {
-
-	private int x, y;
-	private int radius;
-	private Color color;
+public class Circle extends Shape {
 
 	public Circle() {
-		x = y = 0;
-		radius = 100;
-		color = Color.BLACK;
+		super();
 	}
 
-	public Circle(Circle other) {
-		this.x = other.x;
-		this.y = other.y;
-		this.radius = other.radius;
-		this.color = other.color;
+	public Circle(int x, int y) {
+		super(x, y);
 	}
 
-	public Circle(int x, int y, int radius, Color color) {
-		this.x = x;
-		this.y = y;
-		this.radius = radius;
-		this.color = color;
+	public Circle(int x, int y, int size, Color color) {
+		super(x, y, size, color);
 	}
 
-	public void moveTo(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public Circle(Shape shape) {
+		super(shape);
 	}
 
-	public void changeSize(int amount) {
-		this.radius += amount;
+	@Override
+	public Shape copy() {
+		return new Circle(this);
 	}
 
+	@Override
 	public void draw(ShapeRenderer shapeRenderer) {
 		shapeRenderer.setColor(color);
-		shapeRenderer.circle(x, y, radius);
+		shapeRenderer.circle(x, y, size);
+	}
+
+	@Override
+	public void draw(Pixmap pixmap) {
+		pixmap.setColor(color);
+		pixmap.fillCircle(x, y, size);
 	}
 
 }
