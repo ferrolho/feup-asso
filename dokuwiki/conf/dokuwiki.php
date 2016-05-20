@@ -148,7 +148,7 @@ $conf['autoplural']  = 0;                //try (non)plural form of nonexisting f
 $conf['compression'] = 'gz';             //compress old revisions: (0: off) ('gz': gnuzip) ('bz2': bzip)
                                          //  bz2 generates smaller files, but needs more cpu-power
 $conf['gzip_output'] = 0;                //use gzip content encodeing for the output xhtml (if allowed by browser)
-$conf['compress']    = 1;                //Strip whitespaces and comments from Styles and JavaScript? 1|0
+$conf['compress']    = 0;                //Strip whitespaces and comments from Styles and JavaScript? 1|0
 $conf['cssdatauri']  = 0;                //Maximum byte size of small images to embed into CSS, won't work on IE<8
 $conf['send404']     = 0;                //Send a HTTP 404 status for non existing pages?
 $conf['broken_iua']  = 0;                //Platform with broken ignore_user_abort (IIS+CGI) 0|1

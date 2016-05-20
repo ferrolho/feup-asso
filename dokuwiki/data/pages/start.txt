@@ -1,3 +1,4 @@
-<TEST>
-cenas
-<TEST>
+rgrdg
+
+<javascript_transclusion>meteor-vegas::website::server/cron.js::getProdutosCliente</javascript_transclusion>
+
