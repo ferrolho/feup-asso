@@ -5,15 +5,21 @@
 jQuery(document).ready(function(){
 	jQuery(".correct_syntax.javascript_transclusion_result").each(function(){
 		var transclusion_element = this;
-		var user = jQuery(this).attr('data-user');
-		var project = jQuery(this).attr('data-project');
-		var filepath = jQuery(this).attr('data-filepath');
-		var method = jQuery(this).attr('data-method');
+
+		var link = jQuery(this).attr('data-url');
+
+		var githubUrl = link.split("github.com/")[1].split('/');
+
+		var user = githubUrl[0];
+		var repos = githubUrl[1];
+		var branch = githubUrl[3];
+
+		var filepath = link.split(branch+'/')[1];
 
 		var configs = {
 			user : user,
-			repository : project,
-			branch : 'master'
+			repository : repos,
+			branch : branch
 		};
 
 		var github = new GitHubAccess(configs);
@@ -21,10 +27,12 @@ jQuery(document).ready(function(){
 		github.getFile(filepath, null, function (content){
 			//$("textarea").text(content);
 			//console.log(content);
-			//console.log('gg');
+			console.log('gg');
 			jQuery(transclusion_element).text(content);
+
+			//var myRe = new RegExp("d(b+)d", "g");
+			//var myArray = myRe.exec("cdbbdbsbz");
 		});
-		
 	})
 });
 

@@ -14,19 +14,19 @@
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Christopher Smith <chris@jalakai.co.uk>
  */
- 
+
 if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
- 
+
 /**
  * All DokuWiki plugins to extend the parser/rendering mechanism
  * need to inherit from this class
  */
 class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
- 
- 
- 
+   
+   
+   
    /**
     * Get the type of syntax this plugin defines.
     *
@@ -35,17 +35,17 @@ class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
     * @public
     * @static
     */
-    function getType(){
-        return 'substition';
-    }
- 
+   function getType(){
+    return 'substition';
+}
+
     /**
      * What kind of syntax do we allow (optional)
      */
 //    function getAllowedTypes() {
 //        return array();
 //    }
- 
+    
    /**
     * Define how this plugin is handled regarding paragraphs.
     *
@@ -67,7 +67,7 @@ class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
 //    function getPType(){
 //        return 'normal';
 //    }
- 
+   
    /**
     * Where to sort in?
     *
@@ -76,11 +76,11 @@ class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
     * @public
     * @static
     */
-    function getSort(){
-        return 999;
-    }
- 
- 
+   function getSort(){
+    return 999;
+}
+
+
    /**
     * Connect lookup pattern to lexer.
     *
@@ -89,16 +89,16 @@ class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
     * @public
     * @see render()
     */
-    function connectTo($mode) {
+   function connectTo($mode) {
       //$this->Lexer->addSpecialPattern('<TEST>',$mode,'plugin_javascriptcodetransclusion');
       $this->Lexer->addEntryPattern('<javascript_transclusion>',$mode,'plugin_javascriptcodetransclusion');
-    }
- 
-    function postConnect() {
+  }
+  
+  function postConnect() {
       $this->Lexer->addExitPattern('</javascript_transclusion>','plugin_javascriptcodetransclusion');
-    }
- 
- 
+  }
+  
+  
    /**
     * Handler to prepare matched data for the rendering process.
     *
@@ -128,28 +128,28 @@ class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
     * @see render()
     * @static
     */
-    function handle($match, $state, $pos, &$handler){
-        
-        switch ($state) {
-          case DOKU_LEXER_ENTER :
-            $return = '';
-            break;
-          case DOKU_LEXER_MATCHED :
-            $return = '';
-            break;
-          case DOKU_LEXER_UNMATCHED :
-            $return = $match;
-            break;
-          case DOKU_LEXER_EXIT :
-            $return = '';
-            break;
-          case DOKU_LEXER_SPECIAL :
-            $return = '';
-            break;
-        }
-        return $return;
-    }
- 
+   function handle($match, $state, $pos, &$handler){
+    
+    switch ($state) {
+      case DOKU_LEXER_ENTER :
+      $return = '';
+      break;
+      case DOKU_LEXER_MATCHED :
+      $return = '';
+      break;
+      case DOKU_LEXER_UNMATCHED :
+      $return = $match;
+      break;
+      case DOKU_LEXER_EXIT :
+      $return = '';
+      break;
+      case DOKU_LEXER_SPECIAL :
+      $return = '';
+      break;
+  }
+  return $return;
+}
+
    /**
     * Handle the actual output creation.
     *
@@ -169,19 +169,12 @@ class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
     * @public
     * @see handle()
     */
-    function render($mode, &$renderer, $data) {
-   
-        if($mode == 'xhtml'){
-            if ($data != ''){
-                $parts = explode('::', $data);
-                if(sizeof($parts) != 4)
-                    $element = '<div class="javascript_transclusion_result">Wrong syntax...</div>';
-                else{
-                    $element = '<div class="javascript_transclusion_result correct_syntax"'.
-                        ' data-user="'.$parts[0].'" data-project="'.$parts[1].'"'.
-                        ' data-filepath="'.$parts[2].'" data-method="'.$parts[3].'"'.
-                        '>Loading code...</div>';
-                }
+   function render($mode, &$renderer, $data) {
+     
+    if($mode == 'xhtml'){
+        if ($data != ''){
+            $element = '<div class="javascript_transclusion_result correct_syntax"'.
+            ' data-url="'.$data.'">Loading code...</div>';
                 $renderer->doc .= $element;            // ptype = 'normal'
 //              $renderer->doc .= "<p>Hello World!</p>";     // ptype = 'block'
             }
@@ -190,7 +183,7 @@ class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
         return false;
     }
 }
- 
+
 //Setup VIM: ex: et ts=4 enc=utf-8 :
 
 // githubuser::project::filepath::method

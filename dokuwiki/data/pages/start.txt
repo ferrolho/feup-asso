@@ -1,7 +1,5 @@
-rgrdg
+ikikrgrdg
 
-<javascript_transclusion>meteor-vegas::website::server/cron.js::getProdutosCliente</javascript_transclusion>
+<javascript_transclusion>https://github.com/arop/SINF/blob/master/site/app/views/search/index.html.erb</javascript_transclusion>
 
-<javascript_transclusion>arop::SINF::site/app/views/search/index.html.erb::x</javascript_transclusion>
-
-
+cenas
