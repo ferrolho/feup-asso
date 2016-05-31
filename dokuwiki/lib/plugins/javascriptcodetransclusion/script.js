@@ -21,9 +21,8 @@ jQuery(document).ready(function(){
 		github.getFile(filepath, null, function (content){
 			//$("textarea").text(content);
 			//console.log(content);
-			console.log('gg');
-			jQuery(transclusion_element).html(content);
-			
+			//console.log('gg');
+			jQuery(transclusion_element).text(content);
 		});
 		
 	})
