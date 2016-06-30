@@ -1,5 +1,13 @@
-ikikrgrdg
 
-<javascript_transclusion>https://github.com/arop/SINF/blob/master/site/app/views/search/index.html.erb</javascript_transclusion>
+<javascript_transclusion>https://github.com/splitbrain/dokuwiki/blob/master/lib/scripts/cookie.js</javascript_transclusion>
 
-cenas
+
+
+<javascript_transclusion>https://github.com/arop/SINF/blob/master/site/app/assets/javascripts/cart.coffee</javascript_transclusion>
+
+
+<javascript_transclusion>https://github.com/arop/SINF/blob/master/site/app/controllers/admin_controller.rb</javascript_transclusion>
+
+
+
+

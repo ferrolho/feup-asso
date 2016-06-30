@@ -1,10 +1,8 @@
-
 /**
  * Class responsible for accessing the github repository and getting its files.
  * 
  * @param config Object with the repository configurations.
  */
-
 function GitHubAccess (config)
 {
 	this.config = config;
@@ -42,7 +40,6 @@ function GitHubAccess (config)
 		    		{
 		    			if (err)
 		    			{
-		    				console.log(err);
 		    				callback("Error fetching contents", true);
 		    			}
 						_changeDirAndOpen(branch, file.split('/'), version, callback); //Try to open directories or files
@@ -108,7 +105,6 @@ function GitHubAccess (config)
 				{
 					if (err)
 					{
-						console.log(err);
 						callback("Error fetching contents", true);
 					}
 					callback(file_info.getRawContent());
@@ -126,7 +122,6 @@ function GitHubAccess (config)
 					{
 						if (err)
 						{
-							console.log(err);
 							callback("Error fetching contents", true);
 						}
 						callback(file_info.getRawContent());

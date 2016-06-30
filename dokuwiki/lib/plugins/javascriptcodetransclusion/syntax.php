@@ -174,7 +174,7 @@ class syntax_plugin_javascriptcodetransclusion extends DokuWiki_Syntax_Plugin {
     if($mode == 'xhtml'){
         if ($data != ''){
             $element = '<div class="javascript_transclusion_result correct_syntax"'.
-            ' data-url="'.$data.'">Loading code...</div>';
+            ' data-url="'.$data.'"><span class="javascript">Loading code...</span></div>';
                 $renderer->doc .= $element;            // ptype = 'normal'
 //              $renderer->doc .= "<p>Hello World!</p>";     // ptype = 'block'
             }

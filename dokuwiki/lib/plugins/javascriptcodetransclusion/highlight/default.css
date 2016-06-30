@@ -1,22 +1,7 @@
-@import url('highlight/style.css');
-
-.javascript_transclusion_result{
-	/*background-color: #12A033;*/
-	/*color: white;*/
-	padding: 15px;
-	white-space: pre;
-}
-
-.javascript_transclusion_result code{
-	white-space: pre;	
-}
-
-
-/****************************************/
-/*************HIGHLIGHT******************/
-/****************************************/
 /*
+
 Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
 */
 
 .hljs {
