@@ -3,7 +3,7 @@
 
 
 
-<javascript_transclusion>https://github.com/arop/SINF/blob/master/site/app/assets/javascripts/cart.coffee,sendDocVenda</javascript_transclusion>
+<javascript_transclusion>https://github.com/joaofpereira/feup-sinf/blob/master/project/project/Scripts/products/product-units-sold.js,renderProductUnitsSold</javascript_transclusion>
 
 
 <javascript_transclusion>https://github.com/arop/SINF/blob/master/site/app/controllers/admin_controller.rb</javascript_transclusion>

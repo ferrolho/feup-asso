@@ -67,6 +67,9 @@ jQuery(document).ready(function(){
 });
 
 /*function getFunctionBody(content, function_name) {
+	var callFunction = function_name + "(122).toString()";
+	var iframe_content = "<script>eval("+content+"); console.log("+ callFunction + ");</script>";
+
 	console.log("funcBody");
-	jQuery.iframe('<script>eval(content); console.log(\'here\n\' + function_name().toString());</script>').appendTo('body');
+	jQuery.iframe(iframe_content).appendTo('body');
 };*/
