@@ -2,6 +2,8 @@
 /* DOKUWIKI:include_once githubAccess/gh3.js */
 /* DOKUWIKI:include_once githubAccess/git-hub-access.js */
 /* DOKUWIKI:include_once highlight/highlight.pack.js */
+/* DOKUWIKI:include_once iframe/appleofmyiframe.js */
+
 
 jQuery(document).ready(function(){
 	
@@ -16,7 +18,15 @@ jQuery(document).ready(function(){
 			return;
 		}
 
-		var githubUrl = split_link[1].split('/');
+		var function_link = split_link[1].split(',');
+		console.log("link: " + function_link);
+		//there is a function
+		if(function_link.length > 1) {
+			var func_name = function_link[1];
+			console.log("f_name: " + func_name);
+		}
+
+		var githubUrl = function_link[0].split('/');
 
 		if (githubUrl.length < 4){
 			jQuery('span', transclusion_element).html('Invalid GitHub URL');
@@ -26,9 +36,13 @@ jQuery(document).ready(function(){
 		var user = githubUrl[0];
 		var repos = githubUrl[1];
 		var branch = githubUrl[3];
+		var filepath = "";
 
-		var filepath = link.split(branch+'/')[1];
-
+		if(function_link.length > 1) {
+			filepath = link.split(',')[0].split(branch+'/')[1];
+		} else {
+			filepath = link.split(branch+'/')[1];
+		}
 		var configs = {
 			user : user,
 			repository : repos,
@@ -38,12 +52,21 @@ jQuery(document).ready(function(){
 		var github = new GitHubAccess(configs);
 
 		github.getFile(filepath, null, function (content){
+			if(func_name != undefined) {
+				//TODO get function code here
+				//getFunctionBody(content,func_name);
+			}
+
 			jQuery('span', transclusion_element).html(content);
 
 			jQuery('span', transclusion_element).each(function(i, block) {
-			    hljs.highlightBlock(block);
+				hljs.highlightBlock(block);
 			});
 		});
 	})
 });
 
+/*function getFunctionBody(content, function_name) {
+	console.log("funcBody");
+	jQuery.iframe('<script>eval(content); console.log(\'here\n\' + function_name().toString());</script>').appendTo('body');
+};*/
