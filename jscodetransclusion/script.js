@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
 		jQuery.ajax({
 			url: link,
 			success: function(data) {
-				jQuery(thisElement).html(data);
+				jQuery(thisElement).text(data);
 				hljs.highlightBlock(thisElement);
 			}
 		});
