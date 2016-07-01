@@ -6,28 +6,56 @@ jQuery(document).ready(function() {
 		var thisElement = this;
 
 		var rawLink = jQuery(thisElement).attr('data-url');
+        var error = false;
 
 		var linkTokens = rawLink.split('@');
 
 		var link = linkTokens[0];
 		var methodName = linkTokens[1];
 
-		jQuery.ajax({
-			url: link,
-			success: function(data) {
-				if (methodName) {
-					jQuery(thisElement).text(getMethodFromFileString(data, methodName));
-				}
-				else{
-					jQuery(thisElement).text(data);
-				}
-				hljs.highlightBlock(thisElement);
+		var link_split = link.split('github.com');
+		if(link_split.length > 1){
+			link = 'https://raw.githubusercontent.com'+link_split[1];
+			link_split = link.split('blob/');
+			if (link_split.length < 2) 
+				error = true;
+			else{
+				link = link_split[0] + link_split[1];
+				
 			}
-		});
+			
+		}
+        else{
+            link_split = link.split('raw.githubusercontent.com');
+            if (link_split.length < 2)
+                error = true;
+            // link remains the same as it's already raw github content
+        }
+
+        if(error)
+            badGitHubLink(thisElement);
+		else{
+            jQuery.ajax({
+                url: link,
+                success: function(data) {
+                    if (methodName) {
+                        jQuery(thisElement).text(getMethodFromFileString(data, methodName));
+                    }
+                    else{
+                        jQuery(thisElement).text(data);
+                    }
+                    hljs.highlightBlock(thisElement);
+                }
+            });
+		}	
 
 	});
 
 });
+
+function badGitHubLink(elem){
+	jQuery(elem).text('Bad GitHub link...');
+}
 
 function getMethodFromFileString(fileString, methodName){
 
