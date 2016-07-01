@@ -1,7 +1,0 @@
-base javascriptcodetransclusion
-author me
-email me@someplace.com
-date 2016-05-19
-name javascriptcodetransclusion plugin
-desc test the test plugin
-url http://www.dokuwiki.org/devel:syntax_plugins
