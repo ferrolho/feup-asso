@@ -10,23 +10,26 @@
 if (!defined('DOKU_INC')) die();
 
 class syntax_plugin_jscodetransclusion extends DokuWiki_Syntax_Plugin {
+
     /**
      * @return string Syntax mode type
      */
     public function getType() {
-        return 'FIXME: container|baseonly|formatting|substition|protected|disabled|paragraphs';
+        return 'substition';
     }
+
     /**
      * @return string Paragraph type
      */
     public function getPType() {
-        return 'FIXME: normal|block|stack';
+        return 'normal';
     }
+
     /**
      * @return int Sort order - Low numbers go before high numbers
      */
     public function getSort() {
-        return FIXME;
+        return 999;
     }
 
     /**
@@ -35,13 +38,12 @@ class syntax_plugin_jscodetransclusion extends DokuWiki_Syntax_Plugin {
      * @param string $mode Parser mode
      */
     public function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('<FIXME>',$mode,'plugin_jscodetransclusion');
-//        $this->Lexer->addEntryPattern('<FIXME>',$mode,'plugin_jscodetransclusion');
+        $this->Lexer->addEntryPattern('<js-code>',$mode,'plugin_jscodetransclusion');
     }
 
-//    public function postConnect() {
-//        $this->Lexer->addExitPattern('</FIXME>','plugin_jscodetransclusion');
-//    }
+    public function postConnect() {
+        $this->Lexer->addExitPattern('</js-code>','plugin_jscodetransclusion');
+    }
 
     /**
      * Handle matches of the jscodetransclusion syntax
@@ -69,8 +71,11 @@ class syntax_plugin_jscodetransclusion extends DokuWiki_Syntax_Plugin {
     public function render($mode, Doku_Renderer &$renderer, $data) {
         if($mode != 'xhtml') return false;
 
+        $renderer->doc .= '-Hello-';
+
         return true;
     }
+
 }
 
 // vim:ts=4:sw=4:et:
