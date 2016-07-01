@@ -1,0 +1,7 @@
+base   jscodetransclusion
+author Henrique Ferrolho
+email  henriqueferrolho@gmail.com
+date   2016-07-01
+name   jscodetransclusion plugin
+desc   Plugin Description
+url    https://github.com/ferrolho/feup-asso
