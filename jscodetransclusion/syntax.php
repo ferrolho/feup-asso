@@ -38,11 +38,11 @@ class syntax_plugin_jscodetransclusion extends DokuWiki_Syntax_Plugin {
      * @param string $mode Parser mode
      */
     public function connectTo($mode) {
-        $this->Lexer->addEntryPattern('<js-code>',$mode,'plugin_jscodetransclusion');
+        $this->Lexer->addEntryPattern('<js-code src="',$mode,'plugin_jscodetransclusion');
     }
 
     public function postConnect() {
-        $this->Lexer->addExitPattern('</js-code>','plugin_jscodetransclusion');
+        $this->Lexer->addExitPattern('">','plugin_jscodetransclusion');
     }
 
     /**
@@ -55,9 +55,7 @@ class syntax_plugin_jscodetransclusion extends DokuWiki_Syntax_Plugin {
      * @return array Data for the renderer
      */
     public function handle($match, $state, $pos, Doku_Handler &$handler){
-        $data = array();
-
-        return $data;
+        return $state == DOKU_LEXER_UNMATCHED ? $match : null;
     }
 
     /**
@@ -71,7 +69,12 @@ class syntax_plugin_jscodetransclusion extends DokuWiki_Syntax_Plugin {
     public function render($mode, Doku_Renderer &$renderer, $data) {
         if($mode != 'xhtml') return false;
 
-        $renderer->doc .= '-Hello-';
+        if ($data) {
+            //$element = '<div>' . $data . '</div>';
+            $element = $data;
+
+            $renderer->doc .= $element;
+        }
 
         return true;
     }
