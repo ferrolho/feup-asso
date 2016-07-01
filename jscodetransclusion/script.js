@@ -1,3 +1,5 @@
+/* DOKUWIKI:include_once highlight/highlight.pack.js */
+
 jQuery(document).ready(function() {
 
 	jQuery(".js-code").each(function() {
@@ -10,6 +12,7 @@ jQuery(document).ready(function() {
 			url: link,
 			success: function(data) {
 				jQuery(thisElement).html(data);
+				hljs.highlightBlock(thisElement);
 			}
 		});
 
