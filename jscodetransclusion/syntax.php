@@ -70,8 +70,7 @@ class syntax_plugin_jscodetransclusion extends DokuWiki_Syntax_Plugin {
         if($mode != 'xhtml') return false;
 
         if ($data) {
-            //$element = '<div>' . $data . '</div>';
-            $element = $data;
+            $element = '<div class="js-code" data-url="' . $data . '">Loading code...</div>';
 
             $renderer->doc .= $element;
         }
